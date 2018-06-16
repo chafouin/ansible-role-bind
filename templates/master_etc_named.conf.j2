@@ -48,10 +48,21 @@ options {
 
 logging {
   channel default_debug {
-    file "{{ bind_log }}";
+    file "{{ bind_dir}}/data/{{ bind_debug_log }}";
     severity dynamic;
     print-time yes;
   };
+  {% if bind_queries_log is defined -%}
+  channel queries_log {
+    file "{{ bind_dir}}/data/{{ bind_queries_log }}" versions 600 size 20m;
+    print-time yes;
+    print-category yes;
+    print-severity yes;
+    severity info;
+  };
+
+  category queries { queries_log; };
+  {% endif -%}
 };
 
 {% for file in bind_default_zone_files %}
