@@ -1,0 +1,21 @@
+#
+# Logrotate fragment for bind.
+#
+{{ bind_dir }}/data/{{ bind_debug_log }} {
+  daily
+  compress
+  delaycompress
+  rotate 7
+  missingok
+  nocreate
+}
+{% if bind_queries_log is defined -%}
+{{ bind_dir }}/data/{{ bind_queries_log }} {
+  daily
+  compress
+  delaycompress
+  rotate 7
+  missingok
+  nocreate
+}
+{% endif -%}
