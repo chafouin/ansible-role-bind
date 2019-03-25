@@ -12,6 +12,9 @@ bind_zone_domains:
 # List of acls.
 bind_acls: []
 
+# Port to listen on.
+bind_listen_port: 53
+
 # List of IPv4 address of the network interface(s) to listen on. Set to "any"
 # to listen on all interfaces
 bind_listen_ipv4:
